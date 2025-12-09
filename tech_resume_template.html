@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Resume — Your Name</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Roboto+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b0f14;
+        --panel: #071021;
+        --accent: #00d4ff;
+        --accent-2: #7c4dff;
+        --muted: #8b98a8;
+        --glass: rgba(255, 255, 255, 0.04);
+        --radius: 14px;
+        --max-width: 980px;
+        font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        /* width: 1060px;
+        height: 750px; */
+        margin: 0;
+        background: linear-gradient(180deg, #02040a 0%, var(--bg) 60%);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .wrap {
+        /* max-width: 1130px; */
+        /* width: 1100px; */
+        margin: 15px 28px;
+        padding: 28px;
+        border-radius: 18px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.01)
+        );
+        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.7);
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 24px;
+      }
+
+      /* left column */
+      .sidebar {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.02)
+        );
+        padding: 22px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+      }
+      .avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 14px;
+        overflow: hidden;
+        display: inline-block;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        box-shadow: 0 6px 20px rgba(124, 77, 255, 0.12);
+      }
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .name {
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 12px;
+        color: #fff;
+      }
+      .title {
+        font-size: 12px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .contact {
+        margin-top: 18px;
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .contact a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .section {
+        margin-top: 20px;
+      }
+      .section h3 {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 12px 0;
+        letter-spacing: 1px;
+      }
+      .skill {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 8px 0;
+      }
+      .skill .bar {
+        height: 8px;
+        background: var(--glass);
+        border-radius: 999px;
+        flex: 1;
+        margin-left: 12px;
+        margin-right: 12px;
+        position: relative;
+        overflow: hidden;
+      }
+      .skill .bar > i {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      }
+      .tag {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        font-size: 13px;
+        margin: 6px 6px 0 0;
+      }
+
+      /* main */
+      .main {
+        padding: 22px;
+        border-radius: 12px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.015),
+          rgba(255, 255, 255, 0.01)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.03);
+      }
+      .hero {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+      .hero .headline {
+        max-width: 70%;
+      }
+      .headline h1 {
+        margin: 0;
+        font-size: 28px;
+        color: #fff;
+      }
+      .headline p {
+        margin: 6px 0 0;
+        color: var(--muted);
+      }
+      .metrics {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .metric {
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.25),
+          rgba(255, 255, 255, 0.01)
+        );
+        padding: 10px 14px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        min-width: 94px;
+        text-align: center;
+      }
+      .metric strong {
+        display: block;
+        font-size: 16px;
+        color: #fff;
+      }
+      .metric span {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .timeline {
+        margin-top: 18px;
+      }
+      .job {
+        padding: 14px;
+        border-left: 3px solid transparent;
+        margin-bottom: 14px;
+        border-radius: 8px;
+      }
+      .job:hover {
+        box-shadow: 0 8px 24px rgba(2, 6, 23, 0.45);
+      }
+      .job .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .period {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .company {
+        font-weight: 600;
+        color: #fff;
+      }
+      .job p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .projects {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .project {
+        padding: 12px;
+        border-radius: 10px;
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.22),
+          rgba(255, 255, 255, 0.01)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.03);
+      }
+      .tech {
+        font-family: "Roboto Mono", monospace;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      footer {
+        margin-top: 18px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <aside class="sidebar">
+        <div style="display: flex; gap: 14px; align-items: center">
+          <div class="avatar">
+            <img
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><rect width='100%' height='100%' fill='%2300d4ff'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='Inter,Arial' font-size='64' fill='%23081415'>杨</text></svg>"
+              alt="avatar"
+            />
+          </div>
+          <div>
+            <div class="name">杨容</div>
+            <div class="title">前端开发工程师</div>
+          </div>
+        </div>
+
+        <div class="contact">
+          <div>
+            <strong>Email:</strong>
+            <a href="mailto:f544hmrsr@mozmail.com">f544hmrsr@mozmail.com</a>
+          </div>
+          <!-- <div><strong>Website:</strong> <a href="#">your-site.dev</a></div> -->
+          <!-- <div><strong>地点:</strong> 中国云南省昆明市</div> -->
+          <!-- <div><strong>联系电话:</strong> *隐藏*</div> -->
+        </div>
+
+        <div class="section">
+          <h3>技能</h3>
+          <div class="skill">
+            <div>JavaScript</div>
+            <div class="bar" style="width: 46%"><i style="width: 88%"></i></div>
+            <div
+              style="min-width: 34px; text-align: right; color: var(--muted)"
+            >
+              88%
+            </div>
+          </div>
+          <div class="skill">
+            <div>Vue</div>
+            <div class="bar" style="width: 46%"><i style="width: 82%"></i></div>
+            <div
+              style="min-width: 34px; text-align: right; color: var(--muted)"
+            >
+              82%
+            </div>
+          </div>
+          <div class="skill">
+            <div>React / Next.js</div>
+            <div class="bar" style="width: 46%"><i style="width: 54%"></i></div>
+            <div
+              style="min-width: 34px; text-align: right; color: var(--muted)"
+            >
+              54%
+            </div>
+          </div>
+          <div class="skill">
+            <div>Flutter</div>
+            <div class="bar" style="width: 46%"><i style="width: 32%"></i></div>
+            <div
+              style="min-width: 34px; text-align: right; color: var(--muted)"
+            >
+              32%
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Tools</h3>
+          <div class="tag">Git</div>
+          <div class="tag">Visual Studio Code</div>
+          <div class="tag">Debian</div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="hero">
+          <div class="headline">
+            <h1>自我介绍</h1>
+            <p>
+              我是一个经验丰富的前端工程师，一个银行外包崽。离职后，对RSA、ECC算法、IDS、IPS有强烈兴趣。
+            </p>
+          </div>
+          <div class="metrics">
+            <div class="metric"><strong>5年+</strong><span>工作经验</span></div>
+          </div>
+        </div>
+
+        <section class="timeline">
+          <h3 style="margin-top: 18px">工作经历</h3>
+          <div class="job" style="border-left-color: var(--accent)">
+            <div class="meta">
+              <div class="company">北京易诚互动网络技术股份有限公司</div>
+              <div class="period">2020 —— 2025</div>
+            </div>
+            <p>前端开发工程师</p>
+          </div>
+        </section>
+
+        <section style="margin-top: 18px">
+          <h3>参与项目</h3>
+          <div class="projects">
+            <div class="project">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <strong>长沙银行手机银行</strong><span class="tech">Vue</span>
+              </div>
+              <p style="margin: 8px 0 0; color: var(--muted)">
+                负责手机银行信用卡、贷款方面功能的业务开发和页面实现
+              </p>
+            </div>
+            <div class="project">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <strong>九江银行手机银行、小程序</strong
+                ><span class="tech">Vue</span>
+              </div>
+              <p style="margin: 8px 0 0; color: var(--muted)">
+                负责转账、贷款、理财方面功能的业务和页面实现，负责团队代码质量
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-top: 18px">
+          <h3>教育背景</h3>
+          <div class="job" style="border-left-color: rgba(255, 255, 255, 0.06)">
+            <div class="meta">
+              <div class="company">中南林业科技大学涉外学院</div>
+              <div class="period">2014 —— 2018</div>
+            </div>
+            <p style="color: var(--muted); margin: 8px 0 0">全日制 土木工程</p>
+          </div>
+          <div class="job" style="border-left-color: rgba(255, 255, 255, 0.06)">
+            <div class="meta">
+              <div class="company">国家开放大学</div>
+              <div class="period">2024 —— 2026</div>
+            </div>
+            <p style="color: var(--muted); margin: 8px 0 0">计算机科学与技术</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      // Small JS to allow quick editing of name/title by double-clicking
+      document.querySelectorAll(".name, .title, h1").forEach((el) => {
+        el.addEventListener("dblclick", (e) => {
+          const cur = e.target.innerText;
+          const input = document.createElement("input");
+          input.value = cur;
+          input.style.width = "100%";
+          input.style.fontSize = window.getComputedStyle(e.target).fontSize;
+          input.style.fontWeight = window.getComputedStyle(e.target).fontWeight;
+          e.target.replaceWith(input);
+          input.focus();
+          input.addEventListener("blur", () => {
+            const span = document.createElement(e.target.tagName.toLowerCase());
+            span.innerText = input.value || cur;
+            input.replaceWith(span);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
